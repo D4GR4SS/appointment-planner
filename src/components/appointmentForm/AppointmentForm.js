@@ -17,7 +17,7 @@ export const AppointmentForm = ({
     const [month, day, year] = new Date()
       .toLocaleDateString('it-IT')
       .split('/');
-    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    return `${day.padStart(2, '0')}-${month.padStart(2, '0')}-${year}`;
   };
 
   const getContactNames = () => {
@@ -42,7 +42,6 @@ export const AppointmentForm = ({
           type='date'
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          min={getTodayString()}
         />
       </label>
 
@@ -56,6 +55,8 @@ export const AppointmentForm = ({
         />
       </label>
       <label>
+        {' '}
+        With:
         <ContactPicker
           name='contact'
           value={contact.name}
